@@ -11,6 +11,7 @@ services:
         volumes:
           - wordpressfile:/var/www/html
         ports:
+          - "80:80"
           - "443:443"
         networks:
           - inception
@@ -50,13 +51,13 @@ volumes:
         driver_opts:
             type: none
             o: bind
-            device: home/wding-ha/data/mariadb
+            device: ${HOME}/data/mariadb
     wordpressfile:
         driver: local
         driver_opts:
             type: none
             o: bind
-            device: home/wding-ha/data/wordpress
+            device: ${HOME}/data/wordpress
 
 networks:
     inception:

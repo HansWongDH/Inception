@@ -11,4 +11,4 @@ WORKDIR /wordpress_dir
 # expose port 9000
 EXPOSE 9000
 
-CMD ["php-fpm7.3", "-F"]
+CMD ["php-fpm7.3", "-F", "-R"]

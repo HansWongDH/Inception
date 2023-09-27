@@ -3,6 +3,11 @@ NAME = ft_inception
 
 SRC_DIR = srcs/
 
+MKDIR = mkdir -p
+
+MDB_VOLUME_DIR	= $(HOME)/data/mariadb
+WP_VOLUME_DIR	= $(HOME)/data/wordpress
+
 SRC_FILE = $(SRC_DIR)docker-compose.yml
 
 DOCKER_COMPOSE = docker-compose
@@ -19,6 +24,7 @@ all: build
 
 build:
 	$(DOCKER_COMPOSE) -f $(SRC_FILE) $(BUILD_FLAG)
+	$(MKDIR) $(MDB_VOLUME_DIR) $(WP_VOLUME_DIR)
 
 up:
 	$(DOCKER_COMPOSE) -f $(SRC_FILE) $(UP_FLAG)
@@ -28,6 +34,6 @@ down:
 
 clean: down
 
-fclean: down
+fclean:
 	$(DOCKER_COMPOSE) -f $(SRC_FILE) $(PRUNE_FLAG)
-	rm -rf $(SRC_DIR)home
+	rm -rf $(MDB_VOLUME_DIR) $(WP_VOLUME_DIR)
