@@ -9,9 +9,8 @@ services:
           - wordpress
         restart: on-failure
         volumes:
-          - website:/var/www/html
+          - wordpressfile:/var/www/html
         ports:
-          - "80:80"
           - "443:443"
         networks:
           - inception
