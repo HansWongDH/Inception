@@ -13,7 +13,7 @@ UP_FLAG = up -d
 
 DOWN_FLAG = down --rmi all --remove-orphans
 
-PRUNE_FLAG = down --rmi all --remove-orphans
+PRUNE_FLAG = down --rmi all --remove-orphans --volumes
 
 all: build
 
@@ -30,3 +30,4 @@ clean: down
 
 fclean: down
 	$(DOCKER_COMPOSE) -f $(SRC_FILE) $(PRUNE_FLAG)
+	rm -rf $(SRC_DIR)home
