@@ -14,7 +14,7 @@ DOCKER_COMPOSE = docker-compose
 
 BUILD_FLAG = build
 
-UP_FLAG = up -d
+UP_FLAG = up
 
 DOWN_FLAG = down --rmi all --remove-orphans
 

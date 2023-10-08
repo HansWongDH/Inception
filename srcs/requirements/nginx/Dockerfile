@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y nginx openssl
 # copy NGINX configuration file
 COPY /conf /conf
 # create custom tls key
-run mkdir -p /ssl
+RUN mkdir -p /ssl
 RUN openssl req -x509 -newkey rsa:2048 -keyout /ssl/cert.key -out /ssl/cert.crt -days 365 -config /conf/ssl.conf -nodes
 # expose port 443
 EXPOSE 443

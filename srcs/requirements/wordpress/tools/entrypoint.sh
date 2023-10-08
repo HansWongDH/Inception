@@ -12,8 +12,9 @@ else
 
 	cp wp-config-sample.php wp-config.php
 	sed -i "s/database_name_here/$WP_DATABASE_NAME/" wp-config.php
-    sed -i "s/username_here/$WP_USER/" wp-config.php
-    sed -i "s/password_here/$WP_PASSWORD/" wp-config.php
+    sed -i "s/username_here/$WP_DATABASE_USER/" wp-config.php
+    sed -i "s/password_here/$WP_DATABASE_PASSWORD/" wp-config.php
+sed -i  "s/localhost/$WP_LOCALHOST/"    wp-config.php
 
 
 	# if [ -f /etc/php/7.3/fpm/pool.d/www.conf ];	then
