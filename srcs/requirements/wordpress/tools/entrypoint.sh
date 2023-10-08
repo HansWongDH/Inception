@@ -3,7 +3,7 @@
 # if wordpress already installed, give notification else install wordpress
 
 # chown -R www-data:www-data /var/www/html
-# chmod -R 755 /var/www/html
+
 if [ -f ./wp-config.php ]; then
 	echo "wordpress already installed"
 else
