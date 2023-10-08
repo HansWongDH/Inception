@@ -5,10 +5,30 @@ services:
         container_name: nginx
         build: ./requirements/nginx
         image: nginx
+        depends_on:
+          - wordpress
         restart: on-failure
+        volumes:
+          - wordpressfile:/var/www/html
         ports:
           - "80:80"
           - "443:443"
+        networks:
+          - inception
+
+    wordpress:
+        container_name: wordpress
+        build: ./requirements/wordpress
+        image: wordpress
+        depends_on:
+          - mariadb
+        restart: on-failure
+        env_file:
+          - .env
+        volumes:
+          - wordpressfile:/var/www/html
+        expose:
+          - "9000"
         networks:
           - inception
 

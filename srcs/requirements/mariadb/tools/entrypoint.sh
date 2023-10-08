@@ -13,6 +13,8 @@ GRANT ALL PRIVILEGES ON $WP_DATABASE_NAME.* TO '$WP_DATABASE_USER'@'localhost' I
 GRANT ALL PRIVILEGES ON $WP_DATABASE_NAME.* TO '$WP_DATABASE_USER'@'%' IDENTIFIED BY '$WP_DATABASE_PASSWORD';
 FLUSH PRIVILEGES;" >  temp.sql
 
+sed -i s/127.0.0.1/mariadb/ /etc/mysql/mariadb.conf.d/50-server.cnf
 mysql_install_db --user=mysql
 mysqld --user=mysql --bootstrap < temp.sql
 mysqld_safe --user=mysql
+

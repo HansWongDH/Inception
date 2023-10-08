@@ -2,6 +2,8 @@
 
 # if wordpress already installed, give notification else install wordpress
 
+# chown -R www-data:www-data /var/www/html
+# chmod -R 755 /var/www/html
 if [ -f ./wp-config.php ]; then
 	echo "wordpress already installed"
 else
@@ -14,12 +16,8 @@ else
 	sed -i "s/database_name_here/$WP_DATABASE_NAME/" wp-config.php
     sed -i "s/username_here/$WP_DATABASE_USER/" wp-config.php
     sed -i "s/password_here/$WP_DATABASE_PASSWORD/" wp-config.php
-sed -i  "s/localhost/$WP_LOCALHOST/"    wp-config.php
+sed -i  "s/localhost/$WP_LOCALHOST/" wp-config.php
 
-
-	# if [ -f /etc/php/7.3/fpm/pool.d/www.conf ];	then
-	# 	cp /etc/php/7.3/fpm/pool.d/www.conf /etc/php/7.3/fpm/pool.d/www.default.conf
-	# fi
 fi
 
 sed	-i "s|/run/php/php7.3-fpm.sock|9000|" /etc/php/7.3/fpm/pool.d/www.conf
