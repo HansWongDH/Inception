@@ -20,7 +20,7 @@ DOWN_FLAG = down --rmi all --remove-orphans
 
 PRUNE_FLAG = down --rmi all --remove-orphans --volumes
 
-all: build
+all: build up
 
 build:
 	$(DOCKER_COMPOSE) -f $(SRC_FILE) $(BUILD_FLAG)
